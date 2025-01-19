@@ -15,6 +15,8 @@ public class Gui {
     private boolean characterSetLowerCase = false;
     private boolean characterSetDigits = false;
     private boolean characterSetSpecialCharacters = false;
+    private boolean bfType = false;
+    private boolean daType = false;
     private int maxPasswordLength;
     private String passwordInput;
     private boolean start;
@@ -127,6 +129,42 @@ public class Gui {
         });
 
         //--------FOURTH ROW-----------
+
+        JPanel pAttackType = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        pAttackType.setBackground(Color.DARK_GRAY);
+
+        Label labelSelectAttackType = new Label("Select the attack type:");
+        labelSelectAttackType.setForeground(Color.white);
+        labelSelectAttackType.setFont(boldFont);
+        pAttackType.add(labelSelectAttackType);
+
+        JButton bfButton = new JButton("Brute Force Attack");
+        pAttackType.add(bfButton);
+        bfButton.setForeground(Color.WHITE);
+        bfButton.setBackground(Color.gray);
+        pAttackType.add(bfButton);
+
+        JButton daButton = new JButton("Dictionary Attack");
+        pAttackType.add(daButton);
+        daButton.setForeground(Color.WHITE);
+        daButton.setBackground(Color.gray);
+        pAttackType.add(daButton);
+
+        bfButton.addActionListener(e -> {
+            setBfType(true);
+            bfButton.setEnabled(false);
+            daButton.setEnabled(false);
+        });
+
+        daButton.addActionListener(e -> {
+            setDaType(true);
+            daButton.setEnabled(false);
+            daButton.setEnabled(false);
+        });
+
+
+
+        //--------FIFTH ROW-------------
         JPanel p3 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         p3.setBackground(Color.DARK_GRAY);
 
@@ -220,6 +258,7 @@ public class Gui {
         panel.add(p1);
         panel.add(p2);
         panel.add(p2Options);
+        panel.add(pAttackType);
         panel.add(p3);
         panel.add(p4);
         panel.add(p4Pass);
@@ -277,6 +316,22 @@ public class Gui {
 
     public boolean isTargetSHA256(){
         return targetSHA5;
+    }
+
+    public boolean isBfType() {
+        return bfType;
+    }
+
+    public void setBfType(boolean bfType) {
+        this.bfType = bfType;
+    }
+
+    public boolean isDaType() {
+        return daType;
+    }
+
+    public void setDaType(boolean daType) {
+        this.daType = daType;
     }
 
     public boolean isCharacterSetDigits(){

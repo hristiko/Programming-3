@@ -8,8 +8,8 @@ import java.util.Objects;
 
 public class Main {
     //12345678
-    //ef915029557d46f6bb0e812e74cb1a28
-    //public static String pass;
+    //25d55ad283aa400af464c76d713c07ad, md5
+    //------------------------------------------
     //4444, md5
     //public static String pass = "dbc4d84bfcfe2284ba11beffb853a8c4";
 

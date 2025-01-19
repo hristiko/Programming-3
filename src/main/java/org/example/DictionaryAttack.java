@@ -11,15 +11,27 @@ public class DictionaryAttack {
     private ArrayList<String> commonPasswords = new ArrayList<String>();
     private ArrayList<String> commonPasswordsHashed = new ArrayList<String>();
 
-    public DictionaryAttack() {
+    boolean typeHashMD5;
+
+    DictionaryAttack(boolean typeHashMD5) {
+        this.typeHashMD5 = typeHashMD5;
+    }
+
+    public void DictionaryAttackFun(){
         Path fileName = Path.of("D:\\H.K\\FAX\\Prog3\\Project\\Pass1\\prj\\src\\main\\java\\PasswordDictionary.txt");
 
         try (BufferedReader buffer = new BufferedReader(new FileReader(String.valueOf(fileName)))){
             String str;
             while ((str = buffer.readLine()) != null){
                 commonPasswords.add(str);
-                String strToHash = MD5.toMD5crack(str);
-                commonPasswordsHashed.add(strToHash);
+                if (typeHashMD5){
+                    String strToHash = MD5.toMD5crack(str);
+                    commonPasswordsHashed.add(strToHash);
+                } else {
+                    String strToHash = SHA256.toSHA256(str);
+                    commonPasswordsHashed.add(strToHash);
+                }
+
             }
         }
 
